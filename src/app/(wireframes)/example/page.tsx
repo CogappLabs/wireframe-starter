@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import {
 	CategoryBadge,
 	Container,
@@ -8,12 +9,69 @@ import {
 	ScopeMark,
 	SectionLabel,
 	StatCard,
+	useVariation,
+	VariationToggle,
 	WireframeSection,
 } from "@/components/wireframe";
 import { t } from "@/lib/strings";
 import { ScopePage } from "@/providers/ScopeProvider";
 
-export default function ExamplePage() {
+const FEATURE_VARIATIONS = [
+	{ key: "grid", label: "Grid" },
+	{ key: "list", label: "List" },
+] as const;
+
+const features = [
+	{
+		titleKey: "example.feature1Title",
+		descKey: "example.feature1Desc",
+	},
+	{
+		titleKey: "example.feature2Title",
+		descKey: "example.feature2Desc",
+	},
+	{
+		titleKey: "example.feature3Title",
+		descKey: "example.feature3Desc",
+	},
+];
+
+function FeaturesGrid() {
+	return (
+		<div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+			{features.map((f) => (
+				<div key={f.titleKey} className="border border-gray-300 p-5">
+					<h3 className="font-mono text-card font-medium">{t(f.titleKey)}</h3>
+					<p className="mt-2 font-mono text-meta text-gray-500">
+						{t(f.descKey)}
+					</p>
+				</div>
+			))}
+		</div>
+	);
+}
+
+function FeaturesList() {
+	return (
+		<div className="flex flex-col border border-gray-300">
+			{features.map((f, i) => (
+				<div
+					key={f.titleKey}
+					className={`flex gap-6 px-5 py-4 ${i > 0 ? "border-t border-gray-200" : ""}`}
+				>
+					<h3 className="w-48 shrink-0 font-mono text-card font-medium">
+						{t(f.titleKey)}
+					</h3>
+					<p className="font-mono text-meta text-gray-500">{t(f.descKey)}</p>
+				</div>
+			))}
+		</div>
+	);
+}
+
+function ExampleContent() {
+	const variation = useVariation(FEATURE_VARIATIONS);
+
 	return (
 		<ScopePage id="example">
 			<div className="min-h-screen bg-white">
@@ -68,42 +126,23 @@ export default function ExamplePage() {
 					</Container>
 				</WireframeSection>
 
-				{/* Features with CategoryBadge */}
+				{/* Features — with variation toggle */}
 				<WireframeSection label="Features" className="py-12">
 					<Container>
-						<SectionLabel className="mb-2">
-							{t("example.featuresHeading")}
-						</SectionLabel>
-						<div className="mb-8 flex gap-2">
-							<CategoryBadge>Template</CategoryBadge>
-							<CategoryBadge>Starter</CategoryBadge>
-							<CategoryBadge>MVP</CategoryBadge>
-						</div>
-						<div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-							{[
-								{
-									title: t("example.feature1Title"),
-									desc: t("example.feature1Desc"),
-								},
-								{
-									title: t("example.feature2Title"),
-									desc: t("example.feature2Desc"),
-								},
-								{
-									title: t("example.feature3Title"),
-									desc: t("example.feature3Desc"),
-								},
-							].map((feature) => (
-								<div key={feature.title} className="border border-gray-300 p-5">
-									<h3 className="font-mono text-card font-medium">
-										{feature.title}
-									</h3>
-									<p className="mt-2 font-mono text-meta text-gray-500">
-										{feature.desc}
-									</p>
+						<div className="mb-6 flex items-center justify-between">
+							<div>
+								<SectionLabel className="mb-2">
+									{t("example.featuresHeading")}
+								</SectionLabel>
+								<div className="flex gap-2">
+									<CategoryBadge>Template</CategoryBadge>
+									<CategoryBadge>Starter</CategoryBadge>
+									<CategoryBadge>MVP</CategoryBadge>
 								</div>
-							))}
+							</div>
+							<VariationToggle variations={FEATURE_VARIATIONS} />
 						</div>
+						{variation === "list" ? <FeaturesList /> : <FeaturesGrid />}
 					</Container>
 				</WireframeSection>
 
@@ -156,5 +195,13 @@ export default function ExamplePage() {
 				</WireframeSection>
 			</div>
 		</ScopePage>
+	);
+}
+
+export default function ExamplePage() {
+	return (
+		<Suspense>
+			<ExampleContent />
+		</Suspense>
 	);
 }

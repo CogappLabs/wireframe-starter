@@ -5,4 +5,8 @@ export { IssueIcon } from "./IssueIcon";
 export { default as LinkCard } from "./LinkCard";
 export { default as SectionLabel } from "./SectionLabel";
 export { default as StatCard } from "./StatCard";
+export {
+	default as VariationToggle,
+	useVariation,
+} from "./VariationToggle";
 export { default as WireframeSection, ScopeMark } from "./WireframeSection";

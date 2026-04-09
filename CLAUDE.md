@@ -36,6 +36,20 @@ All components are exported from `@/components/wireframe`:
 - `<StatCard value="24" label="Pages">` — big number + label
 - `<CategoryBadge>Tag</CategoryBadge>` — inline category/tag pill
 - `<IssueIcon>` — issue tracker logomark (default: Linear)
+- `<VariationToggle variations={[...]}>`  — URL-param layout switcher
+- `useVariation(variations)` — hook to read the active variation
+
+### Variations
+
+Pages can offer alternative layouts via URL search params (e.g. `?variation=list`). This lets stakeholders compare design options with shareable links.
+
+Usage:
+1. Define variations: `const VARIATIONS = [{ key: "grid", label: "Grid" }, { key: "list", label: "List" }]`
+2. Read the active variation: `const variation = useVariation(VARIATIONS)`
+3. Render the toggle: `<VariationToggle variations={VARIATIONS} />`
+4. Conditionally render: `{variation === "list" ? <ListView /> : <GridView />}`
+
+The first variation is the default. The `?variation` param is omitted for the default, keeping URLs clean. Wrap the page in `<Suspense>` since `useSearchParams` requires it.
 
 ### Scope system
 
