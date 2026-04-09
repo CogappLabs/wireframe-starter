@@ -1,4 +1,4 @@
-import { type ReviewStatus, STATUS_LABELS, STATUS_STYLES } from "@/lib/pages";
+import { type ReviewStatus, STATUS_LABELS, STATUS_STYLES } from "@/lib/data";
 
 export function StatusBadge({ status }: { status: ReviewStatus }) {
 	return (

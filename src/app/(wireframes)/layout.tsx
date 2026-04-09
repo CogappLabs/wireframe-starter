@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ScopeToggle from "@/components/wireframe/ScopeToggle";
 import { MvpBadge, StatusBadge } from "@/components/wireframe/StatusBadge";
-import { pages } from "@/lib/pages";
+import { footerGroups, pages } from "@/lib/data";
 import { isPageMvp } from "@/lib/scope";
 import { t } from "@/lib/strings";
 
@@ -45,7 +45,8 @@ export default function WireframeLayout({
 
 			<footer className="border-t border-gray-300">
 				<div className="px-[var(--margin-xl)] py-8">
-					<div className="flex items-center justify-between">
+					<div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
+						{/* Identity */}
 						<div>
 							<span className="font-mono text-body font-bold uppercase tracking-wide">
 								{t("footer.name")}
@@ -54,9 +55,36 @@ export default function WireframeLayout({
 								{t("footer.tagline")}
 							</p>
 						</div>
-						<p className="font-mono text-meta text-gray-500">
-							{t("footer.disclaimer")}
-						</p>
+
+						{/* Link groups */}
+						<div className="flex gap-10">
+							{footerGroups.map((group) => (
+								<div key={group.heading}>
+									<p className="mb-2 font-mono text-label uppercase text-gray-500">
+										{group.heading}
+									</p>
+									<ul className="flex flex-col gap-1">
+										{group.links.map((link) => (
+											<li key={link.href}>
+												<Link
+													href={link.href}
+													className="font-mono text-body text-gray-600 underline hover:text-gray-900"
+												>
+													{link.label}
+												</Link>
+											</li>
+										))}
+									</ul>
+								</div>
+							))}
+						</div>
+
+						{/* Disclaimer */}
+						<div className="flex flex-col gap-2">
+							<p className="font-mono text-meta text-gray-500">
+								{t("footer.disclaimer")}
+							</p>
+						</div>
 					</div>
 				</div>
 			</footer>

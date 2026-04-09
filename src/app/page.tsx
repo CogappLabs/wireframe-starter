@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { MvpBadge, StatusBadge } from "@/components/wireframe/StatusBadge";
-import { pages } from "@/lib/pages";
+import { pages } from "@/lib/data";
 import { isPageMvp } from "@/lib/scope";
 import { t } from "@/lib/strings";
 

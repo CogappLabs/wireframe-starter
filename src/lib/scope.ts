@@ -23,15 +23,26 @@ const issue = (id: string) => `https://linear.app/team/issue/${id}`;
 export const scope: Record<string, ScopeEntry> = {
 	// ── Example page ───────────────────────────────────────────────────
 	"example/Hero": { mvp: true, issueUrl: issue("EX-1") },
+	"example/Key stats": { mvp: true, issueUrl: issue("EX-2") },
 	"example/Features": {
 		mvp: true,
 		note: "Content TBD",
-		issueUrl: issue("EX-2"),
+		issueUrl: issue("EX-3"),
 	},
+	"example/Related links": { mvp: true, issueUrl: issue("EX-4") },
 	"example/Contact form": {
 		mvp: false,
 		note: "Form integration TBD",
-		issueUrl: issue("EX-3"),
+		issueUrl: issue("EX-5"),
+	},
+
+	// ── Content page ───────────────────────────────────────────────────
+	"content-page/Page header": { mvp: true, issueUrl: issue("CP-1") },
+	"content-page/Body": { mvp: true, issueUrl: issue("CP-2") },
+	"content-page/Sidebar": {
+		mvp: false,
+		note: "Related content feed TBD",
+		issueUrl: issue("CP-3"),
 	},
 };
 
