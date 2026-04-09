@@ -53,6 +53,13 @@ export const pages: WireframePage[] = [
 			"Long-form informational page with breadcrumb, body sections, and sidebar links",
 		status: "wip",
 	},
+	{
+		id: "sitemap",
+		title: "Site Map",
+		description:
+			"Information architecture — page hierarchy and navigation structure",
+		status: "wip",
+	},
 ];
 
 // ── Navigation tree ──────────────────────────────────────────────────

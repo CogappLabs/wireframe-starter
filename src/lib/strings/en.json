@@ -55,5 +55,9 @@
 	"content.sidebarLink1Desc": "Component showcase wireframe",
 	"content.sidebarLink2Title": "All Wireframes",
 	"content.sidebarLink2Desc": "Back to the index",
-	"content.backLink": "Back to index"
+	"content.backLink": "Back to index",
+
+	"sitemap.label": "Information Architecture",
+	"sitemap.heading": "Site Map",
+	"sitemap.description": "Page hierarchy and navigation structure"
 }
