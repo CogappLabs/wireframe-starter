@@ -1,3 +1,4 @@
+export { default as Breadcrumb } from "./Breadcrumb";
 export { default as CategoryBadge } from "./CategoryBadge";
 export { default as Container } from "./Container";
 export { default as ImagePlaceholder } from "./ImagePlaceholder";

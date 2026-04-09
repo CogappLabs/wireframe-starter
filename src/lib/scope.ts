@@ -20,6 +20,14 @@ export interface ScopeEntry {
  */
 const issue = (id: string) => `https://linear.app/team/issue/${id}`;
 
+/**
+ * Keys use the format "pageId/label" where:
+ * - pageId matches the ScopePage id prop (usually the route segment)
+ * - label matches the WireframeSection or ScopeMark label prop
+ *
+ * Example: "homepage/Hero" annotates <WireframeSection label="Hero">
+ * inside <ScopePage id="homepage">.
+ */
 export const scope: Record<string, ScopeEntry> = {
 	// ── Example page ───────────────────────────────────────────────────
 	"example/Hero": { mvp: true, issueUrl: issue("EX-1") },

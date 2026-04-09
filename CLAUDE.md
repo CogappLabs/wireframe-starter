@@ -35,21 +35,21 @@ All components are exported from `@/components/wireframe`:
 - `<LinkCard href="..." title="..." description="...">` — clickable navigation card
 - `<StatCard value="24" label="Pages">` — big number + label
 - `<CategoryBadge>Tag</CategoryBadge>` — inline category/tag pill
+- `<Breadcrumb items={[{label, href?}]}>` — slash-separated breadcrumb trail
 - `<IssueIcon>` — issue tracker logomark (default: Linear)
-- `<VariationToggle variations={[...]}>`  — URL-param layout switcher
-- `useVariation(variations)` — hook to read the active variation
+- `usePageVariations(variations)` — registers variations in the top bar and returns the active key
 
 ### Variations
 
-Pages can offer alternative layouts via URL search params (e.g. `?variation=list`). This lets stakeholders compare design options with shareable links.
+Pages can offer alternative layouts via URL search params (e.g. `?variation=list`). This lets stakeholders compare design options with shareable links. The toggle renders automatically in the layout top bar.
 
 Usage:
-1. Define variations: `const VARIATIONS = [{ key: "grid", label: "Grid" }, { key: "list", label: "List" }]`
-2. Read the active variation: `const variation = useVariation(VARIATIONS)`
-3. Render the toggle: `<VariationToggle variations={VARIATIONS} />`
-4. Conditionally render: `{variation === "list" ? <ListView /> : <GridView />}`
+1. Define variations: `const VARIATIONS = [{ key: "grid", label: "Grid" }, { key: "list", label: "List" }] as const`
+2. Call `usePageVariations` in your page component — it registers the toggle in the top bar and returns the active key: `const variation = usePageVariations(VARIATIONS)`
+3. Conditionally render: `{variation === "list" ? <ListView /> : <GridView />}`
+4. Wrap the page in `<Suspense>` since `useSearchParams` requires it
 
-The first variation is the default. The `?variation` param is omitted for the default, keeping URLs clean. Wrap the page in `<Suspense>` since `useSearchParams` requires it.
+The first variation is the default. The `?variation` param is omitted for the default, keeping URLs clean. The toggle disappears when navigating to pages without variations.
 
 ### Scope system
 

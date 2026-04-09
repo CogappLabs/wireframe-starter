@@ -9,7 +9,7 @@ import VariationToggle from "@/components/wireframe/VariationToggle";
 import { footerGroups, pages } from "@/lib/data";
 import { isPageMvp } from "@/lib/scope";
 import { t } from "@/lib/strings";
-import { useVariationContext } from "@/providers/ScopeProvider";
+import { useVariationContext } from "@/providers/VariationProvider";
 
 function VariationSlot() {
 	const { variations } = useVariationContext();

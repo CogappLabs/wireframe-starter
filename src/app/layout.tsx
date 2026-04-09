@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ScopeProvider, VariationProvider } from "@/providers/ScopeProvider";
+import { ScopeProvider } from "@/providers/ScopeProvider";
+import { VariationProvider } from "@/providers/VariationProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {

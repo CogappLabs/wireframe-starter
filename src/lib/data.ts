@@ -72,8 +72,15 @@ export interface NavNode {
 
 export const navigation: NavNode[] = [
 	{ label: "Home", href: "/" },
-	{ label: "Example", href: "/example" },
-	{ label: "Content Page", href: "/content-page" },
+	{
+		label: "Pages",
+		href: "",
+		children: [
+			{ label: "Example", href: "/example" },
+			{ label: "Content Page", href: "/content-page" },
+		],
+	},
+	{ label: "Site Map", href: "/sitemap" },
 ];
 
 // ── Footer link groups ───────────────────────────────────────────────

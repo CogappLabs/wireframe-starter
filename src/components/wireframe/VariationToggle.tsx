@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { useVariationContext } from "@/providers/ScopeProvider";
+import { useVariationContext } from "@/providers/VariationProvider";
 
 export interface Variation {
 	key: string;

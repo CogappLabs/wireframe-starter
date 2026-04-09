@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import {
+	Breadcrumb,
 	Container,
 	ImagePlaceholder,
 	LinkCard,
@@ -15,15 +16,13 @@ export default function ContentPage() {
 	return (
 		<ScopePage id="content-page">
 			<div className="min-h-screen bg-white">
-				{/* Breadcrumb */}
 				<Container className="border-b border-gray-200 py-2">
-					<span className="font-mono text-meta text-gray-500">
-						<Link href="/" className="underline hover:text-gray-600">
-							{t("content.breadcrumbHome")}
-						</Link>
-						{" / "}
-						<span className="text-gray-600">{t("content.title")}</span>
-					</span>
+					<Breadcrumb
+						items={[
+							{ label: t("content.breadcrumbHome"), href: "/" },
+							{ label: t("content.title") },
+						]}
+					/>
 				</Container>
 
 				{/* Page header */}
