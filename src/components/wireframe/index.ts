@@ -7,6 +7,7 @@ export { default as SectionLabel } from "./SectionLabel";
 export { default as StatCard } from "./StatCard";
 export {
 	default as VariationToggle,
+	usePageVariations,
 	useVariation,
 } from "./VariationToggle";
 export { default as WireframeSection, ScopeMark } from "./WireframeSection";

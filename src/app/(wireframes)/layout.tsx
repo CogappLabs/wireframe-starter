@@ -2,11 +2,20 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Suspense } from "react";
 import ScopeToggle from "@/components/wireframe/ScopeToggle";
 import { MvpBadge, StatusBadge } from "@/components/wireframe/StatusBadge";
+import VariationToggle from "@/components/wireframe/VariationToggle";
 import { footerGroups, pages } from "@/lib/data";
 import { isPageMvp } from "@/lib/scope";
 import { t } from "@/lib/strings";
+import { useVariationContext } from "@/providers/ScopeProvider";
+
+function VariationSlot() {
+	const { variations } = useVariationContext();
+	if (variations.length === 0) return null;
+	return <VariationToggle variations={variations} />;
+}
 
 export default function WireframeLayout({
 	children,
@@ -26,6 +35,9 @@ export default function WireframeLayout({
 				>
 					&larr; {t("nav.backToIndex")}
 				</Link>
+				<Suspense>
+					<VariationSlot />
+				</Suspense>
 				<div className="flex items-center gap-2">
 					<ScopeToggle />
 					{page ? (

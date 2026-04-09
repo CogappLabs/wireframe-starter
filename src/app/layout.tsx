@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ScopeProvider } from "@/providers/ScopeProvider";
+import { ScopeProvider, VariationProvider } from "@/providers/ScopeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,7 +18,9 @@ export default function RootLayout({
 	return (
 		<html lang="en" className="h-full antialiased">
 			<body className="flex min-h-full flex-col font-mono">
-				<ScopeProvider>{children}</ScopeProvider>
+				<ScopeProvider>
+					<VariationProvider>{children}</VariationProvider>
+				</ScopeProvider>
 			</body>
 		</html>
 	);

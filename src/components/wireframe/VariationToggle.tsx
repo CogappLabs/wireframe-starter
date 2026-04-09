@@ -1,6 +1,8 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import { useVariationContext } from "@/providers/ScopeProvider";
 
 export interface Variation {
 	key: string;
@@ -10,6 +12,24 @@ export interface Variation {
 interface VariationToggleProps {
 	param?: string;
 	variations: readonly Variation[];
+}
+
+/**
+ * Register variations with the layout top bar and read the active one.
+ * Call once per page component. The toggle renders automatically in the header.
+ */
+export function usePageVariations(
+	variations: readonly Variation[],
+	param = "variation",
+): string {
+	const { setVariations } = useVariationContext();
+
+	useEffect(() => {
+		setVariations(variations);
+		return () => setVariations([]);
+	}, [variations, setVariations]);
+
+	return useVariation(variations, param);
 }
 
 export function useVariation(

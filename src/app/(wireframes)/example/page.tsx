@@ -9,8 +9,7 @@ import {
 	ScopeMark,
 	SectionLabel,
 	StatCard,
-	useVariation,
-	VariationToggle,
+	usePageVariations,
 	WireframeSection,
 } from "@/components/wireframe";
 import { t } from "@/lib/strings";
@@ -70,7 +69,7 @@ function FeaturesList() {
 }
 
 function ExampleContent() {
-	const variation = useVariation(FEATURE_VARIATIONS);
+	const variation = usePageVariations(FEATURE_VARIATIONS);
 
 	return (
 		<ScopePage id="example">
@@ -126,21 +125,16 @@ function ExampleContent() {
 					</Container>
 				</WireframeSection>
 
-				{/* Features — with variation toggle */}
+				{/* Features — switches layout based on variation */}
 				<WireframeSection label="Features" className="py-12">
 					<Container>
-						<div className="mb-6 flex items-center justify-between">
-							<div>
-								<SectionLabel className="mb-2">
-									{t("example.featuresHeading")}
-								</SectionLabel>
-								<div className="flex gap-2">
-									<CategoryBadge>Template</CategoryBadge>
-									<CategoryBadge>Starter</CategoryBadge>
-									<CategoryBadge>MVP</CategoryBadge>
-								</div>
-							</div>
-							<VariationToggle variations={FEATURE_VARIATIONS} />
+						<SectionLabel className="mb-2">
+							{t("example.featuresHeading")}
+						</SectionLabel>
+						<div className="mb-8 flex gap-2">
+							<CategoryBadge>Template</CategoryBadge>
+							<CategoryBadge>Starter</CategoryBadge>
+							<CategoryBadge>MVP</CategoryBadge>
 						</div>
 						{variation === "list" ? <FeaturesList /> : <FeaturesGrid />}
 					</Container>
