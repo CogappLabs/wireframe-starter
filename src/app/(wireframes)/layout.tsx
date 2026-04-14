@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Suspense } from "react";
+import GlobalNav from "@/components/wireframe/GlobalNav";
 import ScopeToggle from "@/components/wireframe/ScopeToggle";
 import { MvpBadge, StatusBadge } from "@/components/wireframe/StatusBadge";
 import VariationToggle from "@/components/wireframe/VariationToggle";
@@ -52,6 +53,8 @@ export default function WireframeLayout({
 					)}
 				</div>
 			</header>
+
+			<GlobalNav />
 
 			<main className="flex-1">{children}</main>
 
