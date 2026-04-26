@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { getAnnotation } from "@/lib/scope";
+import { getAnnotation, issueTracker } from "@/lib/scope";
 import { useScope, useScopePageId } from "@/providers/ScopeProvider";
 import { IssueIcon } from "./IssueIcon";
 
@@ -55,7 +55,7 @@ export default function WireframeSection({
 						target="_blank"
 						rel="noopener noreferrer"
 						className={`pointer-events-auto flex items-center hover:opacity-70 ${textClass}`}
-						title="Open in issue tracker"
+						title={`Open in ${issueTracker === "jira" ? "Jira" : "Linear"}`}
 					>
 						<IssueIcon />
 					</a>
@@ -98,7 +98,7 @@ export function ScopeMark({ children, label }: ScopeMarkProps) {
 						target="_blank"
 						rel="noopener noreferrer"
 						className={`flex items-center hover:opacity-70 ${textClass}`}
-						title="Open in issue tracker"
+						title={`Open in ${issueTracker === "jira" ? "Jira" : "Linear"}`}
 					>
 						<IssueIcon />
 					</a>

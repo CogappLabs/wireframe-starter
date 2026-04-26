@@ -59,6 +59,15 @@ The scope toggle (top bar) overlays MVP/post-MVP annotations on sections:
 - Notes and issue tracker links shown inline
 - ScopeMark uses a left-edge colour bar for sub-component annotations
 
+### Issue tracker (Linear or Jira)
+
+`src/lib/scope.ts` exports `issueTracker` (default `"linear"`). Switch to `"jira"` to:
+
+- Render the Jira logomark in `<IssueIcon>` instead of Linear's
+- Update the "Open in Linear/Jira" tooltip on each issue link
+
+The `issue()` helper at the top of `scope.ts` builds tracker URLs. Swap the active line between `linear` and `jira` when you change `issueTracker`. Custom trackers are supported by extending the `IssueTracker` union and adding a branch to `IssueIcon`.
+
 ### Data layer
 
 `src/lib/data.ts` is the single source of truth for:

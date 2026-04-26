@@ -13,12 +13,22 @@ export interface ScopeEntry {
 }
 
 /**
- * Helper to build issue tracker URLs. Replace with your own tracker.
- * Examples:
- *   const linear = (id: string) => `https://linear.app/team/issue/${id}`;
- *   const jira = (id: string) => `https://yourorg.atlassian.net/browse/${id}`;
+ * Which issue tracker this project uses. Drives the icon rendered next to
+ * issue links and the `issue()` URL helper below. Change to `"jira"` if
+ * you track work in Atlassian Jira.
  */
-const issue = (id: string) => `https://linear.app/team/issue/${id}`;
+export type IssueTracker = "linear" | "jira";
+export const issueTracker: IssueTracker = "linear";
+
+/**
+ * Helpers to build issue tracker URLs. Uncomment the one you use and
+ * replace the placeholders. The exported `issue` symbol below drives
+ * every `issueUrl` in this file.
+ */
+const linear = (id: string) => `https://linear.app/team/issue/${id}`;
+// const jira = (id: string) => `https://yourorg.atlassian.net/browse/${id}`;
+
+const issue = linear;
 
 /**
  * Keys use the format "pageId/label" where:
