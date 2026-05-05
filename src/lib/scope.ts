@@ -79,3 +79,23 @@ export function isPageMvp(pageId: string): boolean {
 		([key, entry]) => key.startsWith(prefix) && entry.mvp,
 	);
 }
+
+/** Flat scope row, derived from the keyed `scope` map. */
+export interface ScopeRow extends ScopeEntry {
+	pageId: string;
+	label: string;
+	key: string;
+}
+
+/** All scope entries as flat rows, parsing the `pageId/label` key. */
+export function listScopeRows(): ScopeRow[] {
+	return Object.entries(scope).map(([key, entry]) => {
+		const slash = key.indexOf("/");
+		return {
+			pageId: slash >= 0 ? key.slice(0, slash) : key,
+			label: slash >= 0 ? key.slice(slash + 1) : "",
+			key,
+			...entry,
+		};
+	});
+}

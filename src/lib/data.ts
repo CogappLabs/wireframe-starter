@@ -54,6 +54,13 @@ export const pages: WireframePage[] = [
 		status: "wip",
 	},
 	{
+		id: "feature-status",
+		title: "Feature Status",
+		description:
+			"Cross-page MVP / post-MVP feature inventory derived from scope annotations",
+		status: "wip",
+	},
+	{
 		id: "sitemap",
 		title: "Site Map",
 		description:
@@ -80,6 +87,7 @@ export const navigation: NavNode[] = [
 			{ label: "Content Page", href: "/content-page" },
 		],
 	},
+	{ label: "Feature Status", href: "/feature-status" },
 	{ label: "Site Map", href: "/sitemap" },
 ];
 
