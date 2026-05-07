@@ -79,5 +79,16 @@
 	"feature-status.statPostMvp": "Post-MVP",
 	"feature-status.statTotal": "Total sections",
 	"feature-status.statPagesMvp": "MVP pages",
-	"feature-status.empty": "No sections match the current filter."
+	"feature-status.empty": "No sections match the current filter.",
+
+	"accessibility.label": "Accessibility",
+	"accessibility.heading": "Accessibility statement",
+	"accessibility.conformance": "We aim to meet WCAG 2.2 Level AA across every page. Where we fall short, we list known gaps below and welcome feedback.",
+	"accessibility.lastReviewed": "Last reviewed: [date]",
+	"accessibility.featuresHeading": "What is in place",
+	"accessibility.knownGaps": "Known gaps",
+	"accessibility.feedback": "Feedback",
+	"accessibility.feedbackText": "If something is not accessible, please let us know so we can fix it.",
+	"accessibility.contact": "Email accessibility team",
+	"accessibility.contactEmail": "accessibility@example.com"
 }

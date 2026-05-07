@@ -64,7 +64,16 @@ export const pages: WireframePage[] = [
 		id: "sitemap",
 		title: "Site Map",
 		description:
-			"Information architecture — page hierarchy and navigation structure",
+			"Information architecture, page hierarchy and navigation structure",
+		status: "wip",
+	},
+	{
+		// Utility page: reachable via footer (auto-derived from `pages`),
+		// intentionally omitted from the top-bar `navigation` tree below.
+		id: "accessibility-statement",
+		title: "Accessibility Statement",
+		description:
+			"Conformance level, features in place, known gaps, and feedback contact",
 		status: "wip",
 	},
 ];

@@ -33,11 +33,14 @@ All components are exported from `@/components/wireframe`:
 - `<ImagePlaceholder aspect="16/9" label="...">` — grey box with label text
 - `<SectionLabel>` — uppercase mono kicker label
 - `<LinkCard href="..." title="..." description="...">` — clickable navigation card
+- `<StoryCard href="..." title="..." category="..." subtitle? meta?>` — editorial card with image + category badge
 - `<StatCard value="24" label="Pages">` — big number + label
 - `<CategoryBadge>Tag</CategoryBadge>` — inline category/tag pill
 - `<Breadcrumb items={[{label, href?}]}>` — slash-separated breadcrumb trail
+- `<JumpToNav items={[{label, id}]}>` — horizontal anchor nav for long pages
 - `<IssueIcon>` — issue tracker logomark (default: Linear)
 - `usePageVariations(variations)` — registers variations in the top bar and returns the active key
+- `useClickOutside(ref, onDismiss, active?)` — hook for popovers/drawers; dismisses on outside click + Escape
 
 ### Variations
 

@@ -62,6 +62,12 @@ export const scope: Record<string, ScopeEntry> = {
 		note: "Related content feed TBD",
 		issueUrl: issue("CP-3"),
 	},
+
+	// ── Accessibility statement ────────────────────────────────────────
+	"accessibility-statement/Statement": { mvp: true, issueUrl: issue("AS-1") },
+	"accessibility-statement/Features": { mvp: true, issueUrl: issue("AS-2") },
+	"accessibility-statement/Known gaps": { mvp: true, issueUrl: issue("AS-3") },
+	"accessibility-statement/Feedback": { mvp: true, issueUrl: issue("AS-4") },
 };
 
 export function getAnnotation(
